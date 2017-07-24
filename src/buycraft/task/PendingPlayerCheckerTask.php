@@ -16,7 +16,7 @@ class PendingPlayerCheckerTask extends PluginTask implements Listener{
     private $pendingPlayers = [];
     /** @var  TaskHandler */
     private $handler;
-    public function onRun($tick, $manual = false){
+    public function onRun(int $tick, $manual = false){
         DebugUtils::taskCalled($this);
         if($this->getOwner()->getConfig()->get('commandChecker') || $manual){
             $task = new PendingUsersTask($this->getOwner());

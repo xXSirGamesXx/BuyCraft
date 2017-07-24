@@ -18,7 +18,7 @@ class CommandExecuteTask extends ApiTask{
     private $creditedCommands = [];
     /** @var PackageCommand[] */
     private $needsInventorySpace = [];
-    public function onRun($tick){
+    public function onRun(int $tick){
         if(count($this->commandQueue) > 0){
             foreach($this->commandQueue as $i => $command){
                 if($command->getDelay() === 0){

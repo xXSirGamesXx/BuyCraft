@@ -14,7 +14,7 @@ use buycraft\util\DebugUtils;
 
 class CommandDeleteTask extends ApiTask{
     private $deleteQueue = [];
-    public function onRun($tick){
+    public function onRun(int $tick){
         DebugUtils::taskCalled($this);
         if(count($this->deleteQueue) > 0){
             $this->data["commands"] = json_encode($this->deleteQueue);
