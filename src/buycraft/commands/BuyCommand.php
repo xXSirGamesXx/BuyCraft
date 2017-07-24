@@ -7,6 +7,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
 class BuyCommand extends Command implements PluginIdentifiableCommand{
     private $main;
@@ -14,7 +15,7 @@ class BuyCommand extends Command implements PluginIdentifiableCommand{
         parent::__construct($main->getConfig()->get('buyCommand'), "Buy command!", "/buy", []);
         $this->main = $main;
     }
-    public function execute(CommandSender $sender, $label, array $args){
+    public function execute(CommandSender $sender, string $label, array $args) : bool{
         if(!$this->getPlugin()->getConfig()->get('disableBuyCommand')){
             $pageToView = 0;
             $categoryToView = false;
@@ -80,7 +81,7 @@ class BuyCommand extends Command implements PluginIdentifiableCommand{
             return true;
         }
     }
-    public function getPlugin(){
+    public function getPlugin() : Plugin{
         return $this->main;
     }
     public function updateCommand($name){

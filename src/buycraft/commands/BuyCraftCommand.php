@@ -10,6 +10,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
 class BuyCraftCommand extends Command implements PluginIdentifiableCommand{
     private $main;
@@ -17,7 +18,7 @@ class BuyCraftCommand extends Command implements PluginIdentifiableCommand{
         parent::__construct("buycraft", "Buycraft command!", "/<command> <reload/forcecheck/secret/payments <ign>>", ["bc"]);
         $this->main = $main;
     }
-    public function execute(CommandSender $sender, $label, array $args){
+    public function execute(CommandSender $sender, string $label, array $args) : bool{
         if(isset($args[0])){
             if($sender->hasPermission('buycraft.admin')){
                 switch($args[0]){
@@ -101,7 +102,7 @@ class BuyCraftCommand extends Command implements PluginIdentifiableCommand{
             }
         }
     }
-    public function getPlugin(){
+    public function getPlugin() : Plugin{
         return $this->main;
     }
 }
